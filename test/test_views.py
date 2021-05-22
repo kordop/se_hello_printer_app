@@ -18,7 +18,10 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_msg_with_output_json(self):
         rv = self.app.get('/?output=json')
-        self.assertEqual(json.dumps({"imie": "Przemek", "msg": "Hello World!"}).encode(), rv.data)
+        self.assertEqual(
+            json.dumps({"imie": "Przemek", "msg": "Hello World!"}).encode(),
+            rv.data
+        )
 
     def test_msg_with_output_plain(self):
         rv = self.app.get('/?output=plain')
