@@ -1,8 +1,9 @@
 import unittest
 import random
 import string
+import json
 
-from hello_world.formater import plain_text_upper_case
+from hello_world.formater import plain_text_upper_case, format_to_json
 
 
 def string_generator(
@@ -33,6 +34,13 @@ class TestFormater(unittest.TestCase):
         self.assertTrue(name.isupper())
         self.assertTrue(msg.isupper())
 
+    def test_json(self):
+        for generated_str in string_generator(10, 10, "abcdfgHJLASKJKN"):
+            with self.subTest(msg=generated_str, generated_str=generated_str):             
+                formated_json = format_to_json(generated_str, "EFAF")
+                generated_json = json.dumps({"imie":"EFAF","msg":str(generated_str)})
+                self.assertEqual(formated_json, generated_json)
+            
     def test_plain_uppercase_str_iter(self):
         for generated_str in string_generator(10, 10, "abcdfgHJLASKJKN"):
             r = plain_text_upper_case(generated_str, "EEEMSG")
