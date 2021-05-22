@@ -20,8 +20,11 @@ docker_run: docker_build
 	-p 5000:5000 \
 	-d hello-world-printer
 
-docker_push: docker_build
-	@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; \
-	docker tag hello-world-printer $(TAG); \
-	docker push $(TAG); \
+docker_push:
+- |
+if [ -z "${TRAVIS_TAG}" ]; then
+	@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; 
+	docker tag hello-world-printer ${TAG}:${TRAVIS_TAG};
+	docker push ${TAG}:${TRAVIS_TAG};
 	docker logout;
+fi;
