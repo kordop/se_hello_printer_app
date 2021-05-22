@@ -36,4 +36,6 @@ def plain_text_upper_case(msg: str, imie: str) -> str:
 def plain_text_lower_case(msg: str, imie: str) -> str:
     return plain_text(msg.lower(), imie.lower())
 
-print(plain_text_upper_case("","c").split(" "))
+
+if __name__ == "__main__":
+    print(plain_text_upper_case("", "c").split(" "))
