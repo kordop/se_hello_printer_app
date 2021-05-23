@@ -1,5 +1,5 @@
 test:
-  image: "python:3"
+  image: "python:3.6"
   stage: test
   script:
   - pip install -r requirements.txt
