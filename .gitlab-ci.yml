@@ -17,4 +17,5 @@ docker:
   - docker:dind
   stage: docker_build
   script:
-  - docker build -t hello-world-printer .
+  - apk add --update make
+  - make docker_build
