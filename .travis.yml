@@ -12,6 +12,6 @@ script:
 after_success:
   - |
       if [[ $TRAVIS_TAG =~ ^[0-9]+\.[0-9]+.* ]]; then
-      make docker_deploy
+      make docker_push
       fi
       
