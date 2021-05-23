@@ -6,7 +6,7 @@ test:
   image: "python:3.6"
   stage: test
   script:
-  - pip install --upgrade pip'
+  - pip install --upgrade pip
   - pip install -r requirements.txt
   - pip install -r test_requirements.txt
   - PYTHONPATH=. py.test --verbose -s
