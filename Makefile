@@ -7,7 +7,7 @@ DOCKER_HUB_DEST=$(USERNAME)/$(SERVICE_NAME)
 deps:
 	pip install -r requirements.txt; \
 	pip install -r test_requirements.txt
-	
+
 lint:
 	flake8 hello_world test
 
@@ -34,3 +34,6 @@ docker_push:
 	
 test_smoke:
 	curl --fail 127.0.0.1:5000
+
+docker_save:
+	docker save ${DOCKER_IMG_NAME} > .docker_images/${DOCKER_IMG_NAME}.tar
