@@ -1,6 +1,9 @@
 language: python
 services:
 - docker
+env:
+  - USERNAME=kordop
+  - TAG=$(USERNAME)/hello-world-printer
 python:
   - "3.6"
 install:
