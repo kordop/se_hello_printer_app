@@ -1,3 +1,4 @@
 **/*.pyc
 .cache
 .venv/
+.docker_images/
