@@ -2,16 +2,17 @@ language: python
 services:
 - docker
 python:
-  - "3.6"
+- '3.6'
 install:
-  - make deps
+- make deps
 script:
-  - make lint
-  - make test
-  - make docker_build
+- make lint
+- make test
+- make docker_build
 after_success:
-  - |
-      if [[ $TRAVIS_TAG =~ ^[0-9]+\.[0-9]+.* ]]; then
-      make docker_push
-      fi
-      
+- |
+  if [[ $TRAVIS_TAG =~ ^[0-9]+\.[0-9]+.* ]]; then
+  make docker_push
+  fi
+env:
+  secure: YYUoLvEpMrupxTGImkiJksVMaKDvNpJ44MQ7pmw5DM6lYd3K2hKRFHb0f55KOvuFeyTkAkg7uiTYuuxuG86SbHNjk3ZizrNXofjhrUFVLOV4NZ+uSMq5SbA071bDaMsYXYdFGVj88dykO9Xq93QQdyEy3h/Evj5giZMBRtS75c8XsG73i4SNdgXLOYgaa72/P2mpGTlvXYQV8jSfqPiIqqKStGwATIkYBAsATVZz/6nxXYjgoB9lgPEyMB11axw06lrjn4AZBG/TMk3u4bkOkaRISqX8qaU3MSk9out8AHMzP8d4qKAtwyx4jGUtmYKwKOyv7I2Ic16SluWhRqsKNcjjUl5MkcYoSmkxKwlWEBd1i9VWRqfqWdRCt8fBe+J4dQl9bFyBDxDmPUqC+DyTtmqxhNeK33J8s7YYa1LOQBBHbUbDMzW5l37xAY8M6cEzyi9mW7pH/XuohrbnTtktsMA8vWOXaEgZoEuUR2IijhFAENDUUL1gU5+5ZxIcv2QsSnIOCsZ++9Qph0kWBC6JjbNqjdlHMmTmIUi86Wlf905LLnVMUw3p6rAyBW/oC4yNMu2BVijRWvNyIrPDqS//zeF4zpJeitmXwoWac4/BgFCHO+CcAvgBTeeC9ylVLsaMpo/sddxOFlx9COrJbkf/PD61LFnFFEQzwxy1kRUFS74=

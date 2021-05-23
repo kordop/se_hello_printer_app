@@ -1,5 +1,7 @@
 USERNAME=kordop
-TAG=$(USERNAME)/hello-world-printer
+SERVICE_NAME=hello-world-printer
+DOCKER_IMG_NAME=$(SERVICE_NAME)
+DOCKER_HUB_DEST=$(USERNAME)/$(SERVICE_NAME)
 .PHONY: test
 
 deps:
@@ -12,16 +14,19 @@ test:
 run:
 	python main.py
 docker_build:
-	docker build -t hello-world-printer .
+	docker build -t ${SERVICE_NAME} .
 
 docker_run: docker_build
 	docker run \
-	--name hello-world-printer-dev \
+	--name ${DOCKER_IMG_NAME}-dev \
 	-p 5000:5000 \
-	-d hello-world-printer
+	-d ${SERVICE_NAME}
 
 docker_push:
 	@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; \
-	docker tag hello-world-printer ${TAG}:${TRAVIS_TAG}; \
-	docker push ${TAG}:${TRAVIS_TAG}; \
+	docker tag hello-world-printer ${DOCKER_HUB_DEST}:${TRAVIS_TAG}; \
+	docker push ${DOCKER_HUB_DEST}:${TRAVIS_TAG}; \
 	docker logout; 
+	
+test_smoke:
+	curl --fail 127.0.0.1:5000
