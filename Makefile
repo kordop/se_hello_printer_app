@@ -21,7 +21,7 @@ docker_run: docker_build
 	-d hello-world-printer
 
 docker_push:
-	@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; \
+	@docker login --username $(USERNAME) \
 	docker tag hello-world-printer ${TAG}:${TRAVIS_TAG}; \
 	docker push ${TAG}:${TRAVIS_TAG}; \
 	docker logout; 
