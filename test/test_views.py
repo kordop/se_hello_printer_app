@@ -19,18 +19,18 @@ class FlaskrTestCase(unittest.TestCase):
     def test_msg_with_output_json(self):
         rv = self.app.get('/?output=json')
         self.assertEqual(
-            json.dumps({"imie": "Przemek", "msg": "Hello World!"}).encode(),
+            json.dumps({"imie": "Przemyslaw", "msg": "Hello World!"}).encode(),
             rv.data
         )
 
     def test_msg_with_output_plain(self):
         rv = self.app.get('/?output=plain')
-        self.assertEqual(b'Przemek Hello World!', rv.data)
+        self.assertEqual(b'Przemyslaw Hello World!', rv.data)
 
     def test_msg_with_output_upper(self):
         rv = self.app.get('/?output=plain_uppercase')
-        self.assertEqual(b'PRZEMEK HELLO WORLD!', rv.data)
+        self.assertEqual(b'PRZEMYSLAW HELLO WORLD!', rv.data)
 
     def test_msg_with_output_lower(self):
         rv = self.app.get('/?output=plain_lowercase')
-        self.assertEqual(b'przemek hello world!', rv.data)
+        self.assertEqual(b'przemyslaw hello world!', rv.data)
