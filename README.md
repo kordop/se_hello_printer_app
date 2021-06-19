@@ -1,7 +1,7 @@
 # Simple Flask App
 
-![Build Status](https://www.travis-ci.com/kordop/se_hello_printer_app.svg?branch=master)
-![Uptime Status](https://app.statuscake.com/button/index.php?Track=6003151&Days=1&Design=3)
+[![Build Status](https://www.travis-ci.com/kordop/se_hello_printer_app.svg?branch=master)](https://www.travis-ci.com/github/kordop/se_hello_printer_app)
+[![Uptime Status](https://app.statuscake.com/button/index.php?Track=6003151&Days=1&Design=3)](https://app.statuscake.com/UptimeStatus.php?tid=6003151)
 
 Aplikacja dydaktyczna wyświetlająca imię i wiadomość w różnych formatach dla zajęć
 o Continuous Integration, Continuous Delivery i Continuous Deployment.
