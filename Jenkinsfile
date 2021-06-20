@@ -6,7 +6,7 @@ pipeline {
 	            sh 'make deps'
         	}
         }
-        stage('Test') {
+        stage('Tests') {
             steps {
 	            sh 'make test'
         	}
