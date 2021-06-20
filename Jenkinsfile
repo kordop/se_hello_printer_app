@@ -34,6 +34,7 @@ pipeline {
     post{
         always{
             cobertura autoUpdateHealth: false,
+            coberturaReportFile: 'coverage.xml',
             autoUpdateStability: false,
             conditionalCoverageTargets: '70, 0, 0',
             failUnhealthy: false,
