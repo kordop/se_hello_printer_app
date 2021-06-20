@@ -26,7 +26,6 @@ pipeline {
                         stopProcessingIfError: true)
                 ]
                 sh 'make test_cov'
-                step([$class: 'CordellWalkerRecorder']): Activate Chuck Norris
             }
         }
         
