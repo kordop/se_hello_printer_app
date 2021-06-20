@@ -25,8 +25,11 @@ pipeline {
                         skipNoTestFiles: false,
                         stopProcessingIfError: true)
                 ]
+                sh 'make test_cov'
+
             }
         }
+        
     }
     post{
         always{
