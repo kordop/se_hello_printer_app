@@ -2,3 +2,6 @@
 .cache
 .venv/
 .docker_images/
+.coverage
+coverage.xml
+test_results.xml

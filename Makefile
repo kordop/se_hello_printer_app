@@ -2,6 +2,7 @@ USERNAME=kordop
 SERVICE_NAME=hello-world-printer
 DOCKER_IMG_NAME=$(SERVICE_NAME)
 DOCKER_HUB_DEST=$(USERNAME)/$(SERVICE_NAME)
+DOCKER_LICENSE_NAME = license_finder
 .PHONY: test
 
 deps:
@@ -19,6 +20,7 @@ run:
 
 docker_build:
 	docker build -t ${SERVICE_NAME} .
+DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 docker_run: docker_build
 	docker run \
@@ -37,3 +39,17 @@ test_smoke:
 
 docker_save:
 	docker save ${DOCKER_IMG_NAME} > .docker_images/${DOCKER_IMG_NAME}.tar
+
+test_cov:
+	PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml
+
+test_xunit:
+	PYTHONPATH=. py.test -s --cov=. --cov-report xml --junit-xml=test_results.xml
+#
+#find_licenses: 
+#	docker run -v $(DIR):/scan licensefinder/license_finder:6.13.0 bash -c "source ~/.profile && cd /scan && pip3 install -r requirements.txt  && license_finder report --python-version=3"
+
+#docker run -it -v ${DIR}:/scan ${DOCKER_LICENSE_NAME} /bin/ash
+
+#build_licenses:
+#	docker build -f ${DIR}/license_finder/Dockerfile -t ${DOCKER_LICENSE_NAME} ${DIR}/license_finder
