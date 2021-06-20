@@ -41,10 +41,10 @@ docker_save:
 	docker save ${DOCKER_IMG_NAME} > .docker_images/${DOCKER_IMG_NAME}.tar
 
 test_cov:
-	PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml
+	PYTHONPATH=. py.test --verbose -s --cov=hello_world --cov-report xml
 
 test_xunit:
-	PYTHONPATH=. py.test -s --cov=. --cov-report xml --junit-xml=test_results.xml
+	PYTHONPATH=. py.test -s --cov=hello_world --cov-report xml --junit-xml=test_results.xml
 #
 #find_licenses: 
 #	docker run -v $(DIR):/scan licensefinder/license_finder:6.13.0 bash -c "source ~/.profile && cd /scan && pip3 install -r requirements.txt  && license_finder report --python-version=3"
