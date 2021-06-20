@@ -26,7 +26,7 @@ pipeline {
                         stopProcessingIfError: true)
                 ]
                 sh 'make test_cov'
-
+                step([$class: 'CordellWalkerRecorder']): Activate Chuck Norris
             }
         }
         
@@ -45,6 +45,8 @@ pipeline {
             onlyStable: false,
             sourceEncoding: 'ASCII',
             zoomCoverageChart: false
+            chuckNorris()
         }
+
     }
 }
