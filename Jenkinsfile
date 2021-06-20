@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-	            sh 'make Test'
+	            sh 'make test'
         	}
         }
     }
