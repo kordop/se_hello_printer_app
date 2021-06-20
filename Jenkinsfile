@@ -6,6 +6,11 @@ pipeline {
 	            sh 'make deps'
         	}
         }
+        stage('Lint') {
+            steps {
+	            sh 'make lint'
+        	}
+        }
         stage("test") {
             steps {
                 sh 'make test_xunit || true'
@@ -21,11 +26,6 @@ pipeline {
                         stopProcessingIfError: true)
                 ]
             }
-        }
-        stage('Lint') {
-            steps {
-	            sh 'make lint'
-        	}
         }
     }
 }
